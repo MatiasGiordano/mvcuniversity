@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+	background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	font-family: 'Numans', sans-serif;
+}
+
+html,body{
+	margin: 0;
+}
+
+
+.container-wdw{
+	height: 100vh;
+}
+
+.mainContainer{
+	width: 1200px;
+	height: 600px;
+	background-color: rgba(0,0,0,0.5) !important;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -600px;
+}
+
+.imgError{
+	width: 500px;
+	height: auto;
+	margin-top: 50px;
+}
+
+.errMsg{
+	color: white;
+	text-align: center;
+	margin-top: 250px;
+}

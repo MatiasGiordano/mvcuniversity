@@ -1,0 +1,66 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.card-header h4{
+color: white;
+}
+
+.card{
+height: 700px;
+margin-top: auto;
+margin-bottom: auto;
+width: 500px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-header h3{
+color: white;
+}
+
+.input-group-prepend span{
+width: 40px;
+background-color: #FFC312;
+height: 40px;
+color: black;
+border:0 !important;
+}
+
+.form-control{
+height: 40px;
+width: 500px;
+}
+
+.avatar{
+	width: 150px;
+	height: auto;
+	margin: auto;
+}
+
+.reg_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.reg_btn:hover{
+color: black;
+background-color: white;
+}
+
+.powered{
+color: white;
+}
+
+
+.cbadmin{
+	color: white;
+	margin-left: 15px;
+}

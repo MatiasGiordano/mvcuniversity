@@ -1,0 +1,92 @@
+html,body{
+	background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	font-family: 'Numans', sans-serif;
+}
+
+.sideBar{
+width: 300px;
+height: 800px;
+margin-top: auto;
+margin-bottom: auto;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.mainContainer{
+width: 800px;
+height: 800px;
+margin-top: auto;
+margin-bottom: auto;
+background-color: rgba(0,0,0,0.5) !important;
+margin-left: 10px;
+}
+
+.avatar{
+	width: 180px;
+	height: auto;
+	margin: auto;
+	margin-top: 15px; 
+}
+
+.usrName{
+	color: rgb(255,255,255);
+	margin: auto;
+	margin-top: 15px;
+}
+
+.usrMail{
+	color: rgb(255,255,255);
+	margin: auto;
+	margin-top: 15px;
+}
+
+.btns{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+footer{
+	bottom: 0;
+}
+
+
+.btn-change{
+	height: 40px;
+	width: 150px;
+}
+
+
+.btn-danger{
+	margin-right: 20px; 
+}
+
+.materias_disponibles, .mis_materias, .profesores, .materias{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+td, th{
+	color: white;
+	font-size: 15px;}
+.headTable{
+	color: black;
+	font-size: 18px;
+}
+table tbody tr td, table tbody tr th{
+    background-color: rgba(255,255,255, 0.3) !important;
+}
+
+.my-custom-scrollbar {
+position: relative;
+height: 650px;
+overflow: auto;
+}
+.tableContainer{
+	margin-top: 20px;
+}
+
+.table-wrapper-scroll-y {
+display: block;
+}

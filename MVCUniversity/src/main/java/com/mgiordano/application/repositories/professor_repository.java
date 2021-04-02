@@ -1,5 +1,7 @@
 package com.mgiordano.application.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -24,6 +26,7 @@ public class professor_repository implements IProfessor_repository{
 			return prf;
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 			return null;
 		}
 		}
@@ -38,6 +41,7 @@ public class professor_repository implements IProfessor_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return result;
 	}
 
@@ -51,6 +55,7 @@ public class professor_repository implements IProfessor_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return prf;
 	}
 
@@ -64,7 +69,23 @@ public class professor_repository implements IProfessor_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return prf_modify;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<professor> GetProfessors() {
+		List<professor> result;
+		try {
+			this.manager.getTransaction().begin();
+			result= this.manager.createQuery("FROM professor").getResultList();
+			this.manager.getTransaction().commit();
+			return result;
+			}catch(Exception e) {
+				e.printStackTrace();
+				this.manager.getTransaction().rollback();
+			}return null;
 	}
 	
 }

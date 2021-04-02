@@ -1,5 +1,7 @@
 package com.mgiordano.application.services;
 
+import java.util.List;
+
 import com.mgiordano.application.models.professor;
 
 public interface IProfessor_service {
@@ -10,4 +12,6 @@ public interface IProfessor_service {
 	public professor delete_professor(Long id);
 	
 	public professor modify_professor(professor prf, Long id);
+	
+	public List<professor> get_professors();
 }

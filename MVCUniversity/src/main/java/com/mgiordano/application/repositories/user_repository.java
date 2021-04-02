@@ -18,7 +18,7 @@ public class user_repository implements IUser_repository{
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			
+			this.manager.getTransaction().rollback();
 			return null;
 		}
 	}
@@ -33,6 +33,7 @@ public class user_repository implements IUser_repository{
 	public user Login(Long dni, String file, boolean admin) {
 		Integer is_admin=(admin)?1:0;     //operador ternario para convertir true/false a 1/0 (SQL)
 		user usr; 
+		file = (file!="")?file:"'\'";
 		try {
 			this.manager.getTransaction().begin();
 			usr= (user)this.manager.createQuery("from user u where ((u.is_admin="+is_admin.toString()+") and (u.dni="+dni.toString()+")) or ((u.is_admin="+is_admin.toString()+") and (u.dni="+dni.toString()+") and (u.file="+file+"))").getSingleResult();
@@ -40,6 +41,7 @@ public class user_repository implements IUser_repository{
 			return usr;
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 			return null;
 		}
 	}
@@ -56,6 +58,7 @@ public class user_repository implements IUser_repository{
 		
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return usr_modify;
 	}
 		
@@ -69,6 +72,7 @@ public class user_repository implements IUser_repository{
 			this.manager.getTransaction().commit();
 		}catch (Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return result;
 	}
 
@@ -82,6 +86,7 @@ public class user_repository implements IUser_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return usr;
 	}
 	

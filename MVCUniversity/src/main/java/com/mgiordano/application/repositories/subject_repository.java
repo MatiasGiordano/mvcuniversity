@@ -25,6 +25,7 @@ public class subject_repository implements ISubject_repository{
 			return sbj;
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 			return null;
 		}
 	}
@@ -38,6 +39,7 @@ public class subject_repository implements ISubject_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return result;
 	}
 	@Override
@@ -50,6 +52,7 @@ public class subject_repository implements ISubject_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return sbj;
 	}
 	@Override
@@ -62,6 +65,7 @@ public class subject_repository implements ISubject_repository{
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return sbj_modify;
 	}
 	
@@ -76,6 +80,7 @@ public class subject_repository implements ISubject_repository{
 			return result;
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return null;
 	}
 

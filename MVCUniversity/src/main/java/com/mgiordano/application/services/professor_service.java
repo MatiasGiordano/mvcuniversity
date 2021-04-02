@@ -1,5 +1,7 @@
 package com.mgiordano.application.services;
 
+import java.util.List;
+
 import com.mgiordano.application.models.professor;
 import com.mgiordano.application.repositories.IProfessor_repository;
 import com.mgiordano.application.repositories.professor_repository;
@@ -34,6 +36,11 @@ public class professor_service implements IProfessor_service{
 		if((prf!=null)&&(professor_repo.Exist(id))) {
 			return professor_repo.Modify(prf, id);
 		}return prf;
+	}
+
+	@Override
+	public List<professor> get_professors() {
+		return professor_repo.GetProfessors();
 	}
 
 }

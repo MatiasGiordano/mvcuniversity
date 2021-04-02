@@ -1,11 +1,15 @@
 package com.mgiordano.application.services;
 
+import com.mgiordano.application.models.inscription;
 import com.mgiordano.application.models.user;
+import com.mgiordano.application.repositories.IInscription_repository;
 import com.mgiordano.application.repositories.IUser_repository;
+import com.mgiordano.application.repositories.inscription_repository;
 import com.mgiordano.application.repositories.user_repository;
 
 public class user_service implements IUser_service{
 	private IUser_repository user_repo = new user_repository();
+	private IInscription_repository inscription_repo = new inscription_repository();
 
 	@Override
 	public user add_user(user usr) {
@@ -40,6 +44,11 @@ public class user_service implements IUser_service{
 	@Override
 	public user login_user(Long dni, String file, boolean admin) {
 		return user_repo.Login(dni, file, admin);
+	}
+
+	@Override
+	public inscription add_inscription(inscription insc) {
+		return inscription_repo.Add(insc);
 	}
 
 }

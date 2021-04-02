@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mgiordano.application.models.inscription;
 import com.mgiordano.application.models.login_DTO;
+import com.mgiordano.application.models.professor;
 import com.mgiordano.application.models.subject;
 import com.mgiordano.application.models.user;
+import com.mgiordano.application.services.IProfessor_service;
 import com.mgiordano.application.services.ISubject_service;
 import com.mgiordano.application.services.IUser_service;
+import com.mgiordano.application.services.professor_service;
 import com.mgiordano.application.services.subject_service;
 import com.mgiordano.application.services.user_service;
 
@@ -22,6 +25,7 @@ import com.mgiordano.application.services.user_service;
 public class mvc_controller {
 	IUser_service user_serv = new user_service();
 	ISubject_service subject_serv = new subject_service();
+	IProfessor_service professor_serv = new professor_service();
 	
 	@GetMapping(value="/")
 	public String home(Locale locale, Model model) {
@@ -57,17 +61,24 @@ public class mvc_controller {
 	@GetMapping(value="/dashboard")
 	public String dashboard(Locale locale, Model model) {
 		List<subject> sbjs = subject_serv.get_subjects();
+		List<professor> prfs = professor_serv.get_professors();
 		
 		model.addAttribute("sbj_new", new subject());
 		model.addAttribute("insc_new", new inscription());
 		model.addAttribute("sbjs", sbjs);
-		model.addAttribute("materia", new subject()); //agregar materia en modal
+		model.addAttribute("materia", new subject()); 
+		model.addAttribute("prfs", prfs);
 		return "dashboard";
 	}
 	
 	@PostMapping(value="/dashboard")
 	public String subject_dashboard(@ModelAttribute subject sbj, Model model) {
 		subject_serv.add_subject(sbj);
+		return dashboard(null, model);
+	}
+	@PostMapping(value="/user_insc")
+	public String user_insc(@ModelAttribute inscription insc, Model model) {
+		user_serv.add_inscription(insc);
 		return dashboard(null, model);
 	}
 	

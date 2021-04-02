@@ -16,6 +16,26 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="static/css/register.css" th:href="@{/css/register.css}">
+		<script type="text/javascript">
+    function showContent() {
+        element = document.getElementById("file_input");
+        check = document.getElementById("check");
+        icon= document.getElementById("file_i");
+        div = document.getElementById("file_div");
+        if (check.checked) {
+            element.style.display='none';
+            icon.style.display='none';
+            div.style.display='none';
+            user_i.className= 'fas fa-user-tie';
+        }
+        else {
+            element.style.display='block';
+            icon.style.display='block';
+            div.style.display='block';
+            user_i.className= 'fas fa-user';
+        }
+    }
+</script>
 </head>
 <body>
 	
@@ -34,27 +54,27 @@
 
 					<div class="input-group form-group">	
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<span class="input-group-text"><i id="user_i" class="fas fa-user"></i></span>
 						</div>
 						<input type="text" class="form-control" placeholder="Nombre" th:field="*{name}" required>		
 					</div>
 
 					<div class="input-group form-group">	
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<span class="input-group-text"><i class="fas fa-id-card"></i></span>
 						</div>
 						<input type="text" class="form-control" placeholder="DNI" th:field="*{dni}" required>
 					</div>
 
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
+					<div id="file_div" class="input-group form-group">
+						<div id="file_i" class="input-group-prepend">
+							<span class="input-group-text"><i id="file_i" class="fas fa-id-badge"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="N° de Legajo" th:field="*{file}" required>
+						<input id="file_input" type="text" class="form-control" placeholder="N° de Legajo" th:field="*{file}">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
-							<input type="checkbox"  th:field="*{is_admin}">
+							<input id="check" type="checkbox"  th:field="*{is_admin}" onchange="javascript:showContent()">
 							<h6 class="cbadmin">Administrador</h6>
 						</div>
 					</div>	

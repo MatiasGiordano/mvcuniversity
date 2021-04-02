@@ -25,6 +25,7 @@ public class inscription_repository implements IInscription_repository {
 			return insc;
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 			return null;
 		}
 	}
@@ -39,6 +40,7 @@ public class inscription_repository implements IInscription_repository {
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return result;
 	}
 
@@ -52,6 +54,7 @@ public class inscription_repository implements IInscription_repository {
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
+			this.manager.getTransaction().rollback();
 		}return insc;
 	}
 

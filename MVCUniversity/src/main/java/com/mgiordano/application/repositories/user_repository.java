@@ -89,5 +89,20 @@ public class user_repository implements IUser_repository{
 			this.manager.getTransaction().rollback();
 		}return usr;
 	}
+
+	@Override
+	public user Get(int id) {
+		user usr=null;
+		try {
+		this.manager.getTransaction().begin();
+		usr=this.manager.find(user.class, id);
+		this.manager.getTransaction().commit();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+			this.manager.getTransaction().rollback();
+		}return usr;
+		
+	}
 	
 }

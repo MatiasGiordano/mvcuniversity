@@ -12,6 +12,8 @@ public interface IUser_repository {
 	public user Modify(user usr, Long id);
 	
 	public user Delete(Long id);
+
+	public user Get(int id);
 	
 
 }

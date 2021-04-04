@@ -10,4 +10,5 @@ public interface IUser_service {
 	public user delete_user(Long id);
 	public user login_user(Long dni, String file, boolean admin);
 	public inscription add_inscription(inscription insc);
+	public user get_user(int id);
 }

@@ -138,22 +138,27 @@
         			<h3 class="modal-title">Nueva Materia</h3>
       			</div>
       			<div class="modal-body">
-				<form id="form-add-pr" >
+				<form id="form-add-pr" th:action="@{/subject_register/} + ${usr.id}" th:object="${subject}" method="POST">
 					<div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="Materia"  required>	
+						<input type="text" class="form-control" placeholder="Materia" th:field="*{name}" required>	
 					</div>
 					<div class="input-group form-group">
 						<label for="horario" style="margin-right: 15px; margin-top: 4px; font-size: 12px" >Horario</label>						
 						<input type="datetime-local" id="horario" name="horario">
 					</div>
 					<div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="Duración(minutos)"required>
+						<input type="text" class="form-control" placeholder="Duración(minutos)" th:field="*{duration}" required>
 					</div>
 					<div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="Profesor"  required>
+								
+    					
+    					<select name="select" th:field="*{professor_id}">
+						  	<option value="">Elige un profesor</option>
+						  	<option th:each="aprf:${prfs}" th:value="${aprf.id}" th:utext="${aprf.last_name}"/>
+						</select>
 					</div>
 					<div class="input-group form-group">
-						<input type="number" class="form-control" placeholder="Cupos" required>
+						<input type="number" class="form-control" placeholder="Cupos" th:field="*{max_students}" required>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Aceptar" class="btn btn-success float-right login_btn">
@@ -316,10 +321,7 @@
 	    							<td th:text="${sbj.name}"></td>
 	    							<td th:text="${sbj.schedule}+' hs.'"></td>
 	    							<td th:text="${sbj.day}"></td>
-	    							<td>
-										<span th:if="${sbj.professor == null}">No asignado</span>
-										<span th:unless="${sbj.professor.name}"></span>
-									</td>
+	    							<td th:text="${sbj.professor.last_name}"></td>
 	    							<td th:text="${sbj.max_students}"></td> 
 	    						</tr>
 	    					</tbody>

@@ -36,6 +36,7 @@ public class professor {
 	@OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
 	private Set<subject> subject;
 	
+	
 	public Set<subject> getSubject() {
 		return subject;
 	} 

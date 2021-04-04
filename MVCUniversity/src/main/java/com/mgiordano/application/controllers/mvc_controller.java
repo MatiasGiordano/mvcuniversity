@@ -67,7 +67,7 @@ public class mvc_controller {
 		model.addAttribute("sbj_new", new subject());
 		model.addAttribute("insc_new", new inscription());
 		model.addAttribute("sbjs", sbjs);
-		model.addAttribute("materia", new subject()); 
+		model.addAttribute("subject", new subject()); 
 		model.addAttribute("prfs", prfs);
 		model.addAttribute("prf", new professor());
 		return "dashboard";
@@ -91,7 +91,13 @@ public class mvc_controller {
 		model.addAttribute("usr", user_serv.get_user(id));
 		return dashboard(null, model);
 	}
-	
+	@PostMapping(value="/subject_register/{id}")
+	public String subject_register(@PathVariable int id, @ModelAttribute subject sbj, Model model) {
+		sbj.setId(0);   //agrego esto por error en el id al agregar sbj
+		subject_serv.add_subject(sbj);
+		model.addAttribute("usr", user_serv.get_user(id));
+		return dashboard(null, model);
+	}
 	
 
 }

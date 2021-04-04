@@ -43,15 +43,18 @@ public class subject {
     @JoinColumn(name = "id", insertable=false, updatable=false)
 	private professor professor;
 	
+	@Column(name="professor_id")
+	private int professor_id;
+	
 	@Column(name = "max_students" )
-	private int max_students;
+	private Integer max_students;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<inscription> inscriptions;
 
 	
 	public subject(int id, String name, Time schedule, Integer duration, String day,
-			com.mgiordano.application.models.professor professor, int max_students, Set<inscription> inscriptions) {
+			com.mgiordano.application.models.professor professor, Integer max_students, Set<inscription> inscriptions) {
 
 		this.id = id;
 		this.name = name;
@@ -106,10 +109,19 @@ public class subject {
 	public void setProfessor(professor professor) {
 		this.professor = professor;
 	}
-	public int getMax_students() {
+	
+	public Integer getProfessor_id() {
+		return professor_id;
+	}
+
+	public void setProfessor_id(Integer professor_id) {
+		this.professor_id = professor_id;
+	}
+
+	public Integer getMax_students() {
 		return max_students;
 	}
-	public void setMax_students(int max_students) {
+	public void setMax_students(Integer max_students) {
 		this.max_students = max_students;
 	}
 	public Set<inscription> getInscriptions() {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mgiordano.application.models.inscription;
@@ -68,6 +69,7 @@ public class mvc_controller {
 		model.addAttribute("sbjs", sbjs);
 		model.addAttribute("materia", new subject()); 
 		model.addAttribute("prfs", prfs);
+		model.addAttribute("prf", new professor());
 		return "dashboard";
 	}
 	
@@ -82,7 +84,13 @@ public class mvc_controller {
 		return dashboard(null, model);
 	}
 	
-	
+	@PostMapping(value="/professor_register/{id}")
+	public String professor_register(@PathVariable int id, @ModelAttribute professor prf, Model model) {
+		prf.setId(0);   //agrego esto por error en el id al agregar profes
+		professor_serv.add_professor(prf);
+		model.addAttribute("usr", user_serv.get_user(id));
+		return dashboard(null, model);
+	}
 	
 	
 

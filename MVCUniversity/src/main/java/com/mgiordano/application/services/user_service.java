@@ -51,4 +51,9 @@ public class user_service implements IUser_service{
 		return inscription_repo.Add(insc);
 	}
 
+	@Override
+	public user get_user(int id) {
+		return user_repo.Get(id);
+	}
+
 }

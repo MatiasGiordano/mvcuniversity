@@ -27,7 +27,7 @@ create table users(
 	max_students int not null,
 	constraint FK_SUBJECTS_PROFESSOR foreign key (professor_id) references professors(id)
 	)
-	create table inscription(
+	create table inscriptions(
 		id int primary key identity(1,1),
 		subject_id int not null,
 		[user_id] int not null,

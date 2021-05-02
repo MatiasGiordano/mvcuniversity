@@ -14,35 +14,62 @@ import javax.persistence.Table;
 @Entity
 @Table(name="inscriptions")
 public class inscription {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional = false)
 	@Column(name = "id" )
-	private int id;
+	private Integer id;
+	
+	@Column(name = "subject_id" )
+	private Integer subject_id;
+	
+	@Column(name = "user_id" )
+	private Integer user_id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", insertable=false, updatable=false)
-	private subject subject;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", insertable=false, updatable=false)
+    @JoinColumn(name = "fk_user")
 	private user user;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_subject")
+	private subject subject;
 
-	public int getId() {
+	
+	//Constructors
+	public inscription() {
+		
+	}
+
+	public inscription(Integer id, Integer subject_id, Integer user_id, user user, subject subject) {
+		
+		this.id = id;
+		this.subject_id = subject_id;
+		this.user_id = user_id;
+		this.user = user;
+		this.subject = subject;
+	}
+	
+	//Getters, Setters, toString
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public Integer getSubject_id() {
+		return subject_id;
 	}
 
-	public subject getSubject() {
-		return subject;
+	public void setSubject_id(Integer subject_id) {
+		this.subject_id = subject_id;
 	}
 
-	public void setSubject(subject subject) {
-		this.subject = subject;
+	public Integer getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 
 	public user getUser() {
@@ -53,21 +80,18 @@ public class inscription {
 		this.user = user;
 	}
 
-	public inscription() {
-		
+	public subject getSubject() {
+		return subject;
 	}
-	
-	public inscription(int id, subject subject, user user) {
-		this.id = id;
+
+	public void setSubject(subject subject) {
 		this.subject = subject;
-		this.user = user;
 	}
 
 	@Override
 	public String toString() {
-		return "inscription [id=" + id + ", subject=" + subject + ", user=" + user + "]";
+		return "Inscription1 [id=" + id + ", subject_id=" + subject_id + ", user_id=" + user_id + ", user=" + user
+				+ ", subject=" + subject + "]";
 	}
-	
 
-	
 }

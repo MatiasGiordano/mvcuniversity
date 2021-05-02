@@ -1,48 +1,58 @@
 package com.mgiordano.application.models;
 
-import java.sql.Date;
+
+import java.sql.Time;
 
 public class subject_DTO {
 	private String name;
-	private Date schedule;
-	private int duration;
-	private String professor;
-	private int max_students;
-	
+	private Time schedule;
+	private String day;
+	private Integer duration;
+	private Integer professor_id;
+	private Integer max_students;
+
+	public subject_DTO() {
+	}
 	
 	public String getName() {
-		return name;
+		return name;	
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getSchedule() {
+	public Time getSchedule() {
 		return schedule;
 	}
-	public void setSchedule(Date schedule) {
+	public void setSchedule(Time schedule) {
 		this.schedule = schedule;
 	}
-	public int getDuration() {
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public Integer getDuration() {
 		return duration;
 	}
-	public void setDuration(int duration) {
+	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-	public String getProfessor() {
-		return professor;
+	public Integer getProfessor_id() {
+		return professor_id;
 	}
-	public void setProfessor(String professor) {
-		this.professor = professor;
+	public void setProfessor_id(Integer professor_id) {
+		this.professor_id = professor_id;
 	}
-	public int getMax_students() {
+	public Integer getMax_students() {
 		return max_students;
 	}
-	public void setMax_students(int max_students) {
+	public void setMax_students(Integer  max_students) {
 		this.max_students = max_students;
 	}
-
-
-
+	
+	
+	
 
 }
 

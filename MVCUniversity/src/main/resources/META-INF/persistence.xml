@@ -7,16 +7,20 @@
 
   <persistence-unit name="MVCDBConfiguration">
   	
- <!-- 	<class>com.SLiottaDev.Models.User</class> --> 
-
+<class>com.mgiordano.application.models.inscription</class>
+<class>com.mgiordano.application.models.professor</class>
+<class>com.mgiordano.application.models.user</class>
+<class>com.mgiordano.application.models.subject</class>
+ 
     <properties>
         <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
         <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://DESKTOP-8D01L88;databaseName=mvcuniversity;integratedSecurity=true" />
-              
 
         <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
         <property name="hibernate.hbm2ddl.auto" value="update" />
     </properties>
   </persistence-unit>
+  
+
 
 </persistence>

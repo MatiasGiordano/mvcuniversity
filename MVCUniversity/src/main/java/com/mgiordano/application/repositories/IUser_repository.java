@@ -5,9 +5,9 @@ import com.mgiordano.application.models.user;
 public interface IUser_repository {
 	public user Add(user usr);
 	
-	public user Login(Long dni, String file, boolean admin);
+	public user Login(Long dni, String file, Integer is_admin);
 	
-	public Boolean Exist(Long id);
+	public user Exist(Long id);
 	
 	public user Modify(user usr, Long id);
 	

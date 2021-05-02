@@ -31,17 +31,16 @@ public class inscription_repository implements IInscription_repository {
 	}
 
 	@Override
-	public Boolean Exist(Long id) {
-		Boolean result= false;
+	public inscription Exist(Long id) {
+		inscription insc= new inscription();
 		try {
 			this.manager.getTransaction().begin();
-			if(this.manager.find(inscription.class, id) !=null) {
-				result=true;}
+			insc= this.manager.find(inscription.class, id);
 			this.manager.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
 			this.manager.getTransaction().rollback();
-		}return result;
+		}return insc;
 	}
 
 	@Override

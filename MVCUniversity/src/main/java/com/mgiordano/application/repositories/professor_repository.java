@@ -18,74 +18,90 @@ public class professor_repository implements IProfessor_repository{
 	}
 
 	@Override
-	public professor Add(professor prf) {
+	public professor Add(professor prf) throws RuntimeException{
 		try {
 			this.manager.getTransaction().begin();
 			this.manager.merge(prf);
 			this.manager.getTransaction().commit();
 			return prf;
 		}catch(Exception e) {
-			e.printStackTrace();
 			this.manager.getTransaction().rollback();
-			return null;
+			throw new RuntimeException(e);
 		}
-		}
-
-	@Override
-	public Boolean Exist(Long id) {
-		Boolean result= false;
-		try {
-			this.manager.getTransaction().begin();
-			if(this.manager.find(professor.class, id) !=null) {
-				result=true;}
-			this.manager.getTransaction().commit();
-		}catch(Exception e) {
-			e.printStackTrace();
-			this.manager.getTransaction().rollback();
-		}return result;
 	}
 
 	@Override
-	public professor Delete(Long id) {
+	public professor Exist(Long id) throws RuntimeException{
+		professor prf= new professor();
+		try {
+			this.manager.getTransaction().begin();
+			prf = this.manager.find(professor.class, id);
+			this.manager.getTransaction().commit();
+			return prf;
+		}catch(Exception e) {
+			this.manager.getTransaction().rollback();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public professor Delete(Long id) throws RuntimeException{
 		professor prf= new professor();
 		try {
 			this.manager.getTransaction().begin();
 			prf=(professor)this.manager.find(professor.class, id);
 			this.manager.remove(prf);
 			this.manager.getTransaction().commit();
-		}catch(Exception e) {
-			e.printStackTrace();
+			return prf;
+		}catch(Exception e) {			
 			this.manager.getTransaction().rollback();
-		}return prf;
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
-	public professor Modify(professor prf, Long id) {
+	public professor Modify(professor prf, Long id)  throws RuntimeException{
 		professor prf_modify = new professor();
 		try {
 			this.manager.getTransaction().begin();
 			prf_modify = this.manager.find(professor.class, id);
-			prf_modify = prf;
+			prf_modify = prf;	
 			this.manager.getTransaction().commit();
+			return prf_modify;
 		}catch(Exception e) {
-			e.printStackTrace();
 			this.manager.getTransaction().rollback();
-		}return prf_modify;
+			 throw new RuntimeException(e);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<professor> GetProfessors() {
+	public List<professor> GetProfessors()  throws RuntimeException{
 		List<professor> result;
 		try {
 			this.manager.getTransaction().begin();
 			result= this.manager.createQuery("FROM professor").getResultList();
 			this.manager.getTransaction().commit();
 			return result;
-			}catch(Exception e) {
-				e.printStackTrace();
-				this.manager.getTransaction().rollback();
-			}return null;
+		}catch(Exception e) {
+			this.manager.getTransaction().rollback();
+			throw new RuntimeException(e);
+		}
 	}
+
+	@Override
+	public professor GetProfessor(Integer id)  throws RuntimeException{
+		professor prf=null;
+		try {
+			this.manager.getTransaction().begin();
+			prf=this.manager.find(professor.class, id);
+			this.manager.getTransaction().commit();
+			return prf;
+		}catch(Exception e) {	
+			this.manager.getTransaction().rollback();
+			throw new RuntimeException(e);
+		}	
+	}
+	
 	
 }

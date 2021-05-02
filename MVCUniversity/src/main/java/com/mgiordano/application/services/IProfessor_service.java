@@ -14,4 +14,6 @@ public interface IProfessor_service {
 	public professor modify_professor(professor prf, Long id);
 	
 	public List<professor> get_professors();
+
+	public professor get_professor(Integer id);
 }
